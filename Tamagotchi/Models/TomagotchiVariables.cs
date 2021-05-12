@@ -34,6 +34,16 @@ namespace Tamagotchi.Models
     {
       return _creatures[searchId - 1];
     }
+    public int TimeTamagotchi()
+    {
+      FoodLevel -= 1;
+      Attention -= 1;
+      return Rest -= 1;
+    }
+    // public static void FeedTamagotchi()
+    // {
+    //   return
+    // }
   }
 }
 //Method for feeding

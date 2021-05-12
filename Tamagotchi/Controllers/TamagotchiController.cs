@@ -12,7 +12,7 @@ namespace Tamagotchi.Controllers
   public class TamagotchiController : Controller
   {
     [HttpGet("/tamagotchis")]
-    public ActionResult Index()
+    public ActionResult TamagotchiIndex()
     {
       List<IndividualTamagotchi> allPets = IndividualTamagotchi.GetAll();
       return View(allPets);
@@ -26,7 +26,7 @@ namespace Tamagotchi.Controllers
     public ActionResult Create(string name)
     {
       IndividualTamagotchi newPet = new IndividualTamagotchi(name);
-      return View(RedirectToAction("Index"));
+      return RedirectToAction("TamagotchiIndex");
     }
     [HttpPost("/tamagotchis/delete")]
     public ActionResult DeleteAll()
@@ -39,6 +39,14 @@ namespace Tamagotchi.Controllers
     {
       IndividualTamagotchi foundPet = IndividualTamagotchi.Find(id);
       return View(foundPet);
+    }
+    [HttpPost("/tamagotchis/{id}")]
+    public ActionResult Update(int id)
+    {
+      IndividualTamagotchi updatedPet = IndividualTamagotchi.Find(id);
+      updatedPet.TimeTamagotchi();
+      return RedirectToAction("TamagotchiIndex");
+      // return RedirectToAction("/tamagotchis/{id}");
     }
   }
 }

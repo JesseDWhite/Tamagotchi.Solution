@@ -1,0 +1,35 @@
+@using Tamagotchi.Models;
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tamagotchi Creator</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="~/css/styles.css" type="text/css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>@Model.Name</h1>
+    <h2>@Model.Name Health Status</h2>
+    <ul>
+      <li>Age: @Model.Age</li>
+      <li>Food Level: @Model.FoodLevel</li>
+      <li>Attention Level: @Model.Attention</li>
+      <li>Rest Status: @Model.Rest</li>
+    </ul>
+    <form action="/tamagotchis/@Model.Id" method="post">
+      <button class="btn btn-primary">Feed</button>
+      <button class="btn btn-success">Give Attention</button>
+      <button class="btn btn-warning">Rest</button>
+      <button type="submit" class="btn btn-danger">Time Pass</button>
+    </form>
+
+    <a href="/"><button class="btn btn-primary mt-6">Home</button></a>
+  </div>
+</body>
+
+
+</html>

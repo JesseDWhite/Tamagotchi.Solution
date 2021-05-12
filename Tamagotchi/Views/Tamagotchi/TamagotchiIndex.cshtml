@@ -1,3 +1,5 @@
+@using Tamagotchi.Models;
+
 <!DOCTYPE html>
 <html>
 
@@ -9,16 +11,25 @@
 </head>
 
 <body>
-  <h1>Tamagotchi Creator</h1>
-  <h3>Give your new Tamagotchi a name and your Tamagotchi will be created!</h3>
+  <h1>Tamagotchis</h1>
   <div class="container">
-    <form action="/tamagotchis" method="post">
-      <label for="tamagotchi-name">Enter a name for your new Tamagotchi</label>
-      <input id="name" name="name" type="text">
-      <button class="btn btn-success" type="submit">Create New Tamagotchi!</button>
+    <ol>
+      @foreach (IndividualTamagotchi pet in Model)
+      {
+        <li class="pet-name"><a href="/tamagotchis/@pet.Id">@pet.Name</a></li>
+        <ul>
+          <li>@pet.FoodLevel</li>
+          <li>@pet.Attention</li>
+          <li>@pet.Rest</li>
+        </ul>
+      }
+    </ol>
+    <form action="/tamagotchis/delete" method="post">
+      <button class="btn btn-danger mt-6" type="submit" name="button">Delete Tamagotchis</button>
     </form>
     <br>
     <a href="/"><button class="btn btn-primary mt-6">Home</button></a>
+
   </div>
 </body>
 
